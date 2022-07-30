@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -7,6 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField] 
     private Camera _camera;
 
+    private Vector2 _mousePos;
+    
     private void Start()
     {
         _rigidbody = gameObject.GetComponent<Rigidbody2D>();
@@ -14,7 +17,11 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Vector2 mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
-        _rigidbody.position = mousePos;
+        _mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+    private void FixedUpdate()
+    {
+        _rigidbody.position = _mousePos;
     }
 }
