@@ -739,6 +739,8 @@ MonoBehaviour:
   _spawners: {fileID: 1980401654}
   _defender: {fileID: 985334612}
   _marketplace: {fileID: 638468824}
+  _vibrationButton: {fileID: 1369503642}
+  _soundButton: {fileID: 1531363569}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,7 +1871,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 225.00003, y: -175}
+  m_AnchoredPosition: {x: 275, y: -175}
   m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!111 &1369503644
@@ -1881,11 +1883,11 @@ Animation:
   m_GameObject: {fileID: 1369503642}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 7400000, guid: 84cc9b7e94f0fe948af28439ff6448f7, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 84cc9b7e94f0fe948af28439ff6448f7, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!114 &1369503645
@@ -2019,7 +2021,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 225.00003, y: -138}
+  m_AnchoredPosition: {x: 275, y: -138}
   m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!111 &1531363571

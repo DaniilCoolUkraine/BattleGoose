@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class Menu : MonoBehaviour
     [Header("Marketplace items")]
     [SerializeField] private GameObject _marketplace;
     
+    [Header("Options items")]
+    [SerializeField] private GameObject _vibrationButton;
+    [SerializeField] private GameObject _soundButton;
+    
     public void Play()
     {
         SwitchGameState(true);
@@ -27,7 +32,10 @@ public class Menu : MonoBehaviour
     {
         _marketplace.gameObject.SetActive(false);
     }
-    public void Options(){}
+    public void Options()
+    {
+        PlayOptionsAnimation();
+    }
     public void SwitchVibration(){}
     public void SwitchSound(){}
     public void Restart(){}
@@ -42,4 +50,11 @@ public class Menu : MonoBehaviour
         gameObject.GetComponent<MoveBackground>().enabled = state;
         gameObject.GetComponent<UIPoints>().enabled = state;
     }
+
+    private void PlayOptionsAnimation()
+    {
+        _vibrationButton.GetComponent<Animation>().Play();
+        _soundButton.GetComponent<Animation>().Play();
+    }
+    
 }
