@@ -5,16 +5,28 @@ using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
+    
+    [Header("Play items")]
     [SerializeField] private GameObject _startMenu;
     [SerializeField] private GameObject _hud;
     [SerializeField] private GameObject _spawners;
     [SerializeField] private GameObject _defender;
 
+    [Header("Marketplace items")]
+    [SerializeField] private GameObject _marketplace;
+    
     public void Play()
     {
         SwitchGameState(true);
     }
-    public void OpenMarket(){}
+    public void OpenMarket()
+    {
+        _marketplace.gameObject.SetActive(true);
+    }
+    public void CloseMarket()
+    {
+        _marketplace.gameObject.SetActive(false);
+    }
     public void Options(){}
     public void SwitchVibration(){}
     public void SwitchSound(){}
