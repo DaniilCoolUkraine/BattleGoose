@@ -17,6 +17,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject _marketplace;
     
     [Header("Options items")]
+    private bool isClosed = true;
     [SerializeField] private GameObject _vibrationButton;
     [SerializeField] private GameObject _soundButton;
     
@@ -34,12 +35,22 @@ public class Menu : MonoBehaviour
     }
     public void Options()
     {
-        PlayOptionsAnimation();
+        if (isClosed)
+        {
+            PlayOpenAnimation();
+            isClosed = false;
+        }
+        else
+        {
+            PlayCloseAnimation();
+            isClosed = true;
+        }
     }
     public void SwitchVibration(){}
     public void SwitchSound(){}
     public void Restart(){}
 
+    
     private void SwitchGameState(bool state)
     {
         _startMenu.gameObject.SetActive(!state);
@@ -51,10 +62,15 @@ public class Menu : MonoBehaviour
         gameObject.GetComponent<UIPoints>().enabled = state;
     }
 
-    private void PlayOptionsAnimation()
+    private void PlayOpenAnimation()
     {
-        _vibrationButton.GetComponent<Animation>().Play();
-        _soundButton.GetComponent<Animation>().Play();
+        _vibrationButton.GetComponent<Animation>().Play("OpenVibration");
+        _soundButton.GetComponent<Animation>().Play("OpenSound");
+    }
+    private void PlayCloseAnimation()
+    {
+        _vibrationButton.GetComponent<Animation>().Play("CloseVibration");
+        _soundButton.GetComponent<Animation>().Play("CloseSound");
     }
     
 }
