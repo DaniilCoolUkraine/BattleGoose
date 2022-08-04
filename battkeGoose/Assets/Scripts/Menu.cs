@@ -17,10 +17,16 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject _marketplace;
     
     [Header("Options items")]
-    private bool isClosed = true;
+    [SerializeField] private bool isClosed = true;
     [SerializeField] private GameObject _vibrationButton;
     [SerializeField] private GameObject _soundButton;
     
+    [Header("Vibration options")]
+    [SerializeField] private bool isVibration = true;
+    
+    [Header("Sound options")]
+    [SerializeField] private bool isSound = true;
+
     public void Play()
     {
         SwitchGameState(true);
@@ -46,11 +52,38 @@ public class Menu : MonoBehaviour
             isClosed = true;
         }
     }
-    public void SwitchVibration(){}
-    public void SwitchSound(){}
+
+    public void SwitchVibration()
+    {
+        if (isVibration)
+        {
+            TurnOffVibration();
+            isVibration = false;
+        }
+        else
+        {
+            TurnOnVibration();
+            isVibration = true;
+        }
+    }
+    public void SwitchSound()
+    {
+        if (isSound)
+        {
+            TurnOffSound();
+            isSound = false;
+        }
+        else
+        {
+            TurnOnSound();
+            isSound = true;
+        }
+    }
     public void Restart(){}
 
-    
+    #region utilities
+
+    //play or stop game
     private void SwitchGameState(bool state)
     {
         _startMenu.gameObject.SetActive(!state);
@@ -62,6 +95,7 @@ public class Menu : MonoBehaviour
         gameObject.GetComponent<UIPoints>().enabled = state;
     }
 
+    //play animation to close or open options
     private void PlayOpenAnimation()
     {
         _vibrationButton.GetComponent<Animation>().Play("OpenVibration");
@@ -72,5 +106,28 @@ public class Menu : MonoBehaviour
         _vibrationButton.GetComponent<Animation>().Play("CloseVibration");
         _soundButton.GetComponent<Animation>().Play("CloseSound");
     }
+
+    //turn on & turn off vibration
+    private void TurnOffVibration()
+    {
+        Debug.Log("Vibration off");
+        //Debug.Log("Sound off");
+    }
+    private void TurnOnVibration()
+    {
+        Debug.Log("Vibration on");
+        //Debug.Log("Sound on");
+    }
     
+    //turn on & turn off sound
+    private void TurnOffSound()
+    {
+        Debug.Log("Sound off");
+    }
+    private void TurnOnSound()
+    {
+        Debug.Log("Sound on");
+    }
+    
+    #endregion
 }
