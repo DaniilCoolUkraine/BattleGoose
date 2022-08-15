@@ -660,6 +660,7 @@ MonoBehaviour:
   - {fileID: 4567130555029984236, guid: 1c502c33fcfb2674087e49ef200bb9bd, type: 3}
   - {fileID: 980998443980497957, guid: 1af40322364d1f842ad52af44ad7f802, type: 3}
   - {fileID: 3647758501917775084, guid: 90b9c48555bffcc43a920f946a959406, type: 3}
+  - {fileID: 4567130555029984236, guid: a2261d3daffd2cd47b84e537a52e7c1a, type: 3}
   minTime: 2
   maxTime: 5
 --- !u!1 &501896516
@@ -739,8 +740,11 @@ MonoBehaviour:
   _spawners: {fileID: 1980401654}
   _defender: {fileID: 985334612}
   _marketplace: {fileID: 638468824}
+  isClosed: 1
   _vibrationButton: {fileID: 1369503642}
   _soundButton: {fileID: 1531363569}
+  isVibration: 1
+  isSound: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,6 +1172,7 @@ MonoBehaviour:
   - {fileID: 4567130555029984236, guid: 1c502c33fcfb2674087e49ef200bb9bd, type: 3}
   - {fileID: 980998443980497957, guid: 1af40322364d1f842ad52af44ad7f802, type: 3}
   - {fileID: 3647758501917775084, guid: 90b9c48555bffcc43a920f946a959406, type: 3}
+  - {fileID: 4567130555029984236, guid: a2261d3daffd2cd47b84e537a52e7c1a, type: 3}
   minTime: 2
   maxTime: 5
 --- !u!1 &901391801
@@ -1886,6 +1891,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 84cc9b7e94f0fe948af28439ff6448f7, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 84cc9b7e94f0fe948af28439ff6448f7, type: 2}
+  - {fileID: 7400000, guid: bf09ad831d7ec4640bcf33c49820beb8, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -2036,6 +2042,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: ff32253abb561444a90db7d7bb688a7a, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: ff32253abb561444a90db7d7bb688a7a, type: 2}
+  - {fileID: 7400000, guid: 2764890c0a2cf894d9f8adf29ff7ea68, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -2335,6 +2342,7 @@ MonoBehaviour:
   - {fileID: 4567130555029984236, guid: 1c502c33fcfb2674087e49ef200bb9bd, type: 3}
   - {fileID: 980998443980497957, guid: 1af40322364d1f842ad52af44ad7f802, type: 3}
   - {fileID: 3647758501917775084, guid: 90b9c48555bffcc43a920f946a959406, type: 3}
+  - {fileID: 4567130555029984236, guid: a2261d3daffd2cd47b84e537a52e7c1a, type: 3}
   minTime: 2
   maxTime: 5
 --- !u!1 &1680765007
