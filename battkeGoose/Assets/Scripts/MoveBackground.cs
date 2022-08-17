@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class MoveBackground : MonoBehaviour
 {
-
-    [SerializeField] private RawImage _image;
+    
+    [SerializeField] private RawImage[] _image;
     [SerializeField] private float _speed;
     
     void Update()
@@ -14,6 +14,9 @@ public class MoveBackground : MonoBehaviour
 
     void InfiniteMove()
     {
-        _image.uvRect = new Rect(_image.uvRect.position + new Vector2(0, _speed) * Time.deltaTime, _image.uvRect.size);
+        foreach (var image in _image)
+        {
+            image.uvRect = new Rect(image.uvRect.position + new Vector2(0, _speed) * Time.deltaTime, image.uvRect.size);
+        }
     }
 }
