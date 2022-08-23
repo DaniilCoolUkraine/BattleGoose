@@ -4,10 +4,11 @@ public class ChangeLevels : MonoBehaviour
 {
 
     [SerializeField] private GameObject[] _levels;
-    [SerializeField] private bool _setInPlace = true;
     [SerializeField] private float _speed;
 
     private UIPoints _points;
+
+    public bool changedState = false;
     
     private void Start()
     {
@@ -16,36 +17,70 @@ public class ChangeLevels : MonoBehaviour
     
     private void Update()
     {
+        SetNextLevelPosition();
         
+        if (_points.enabled && _points.Points >= 1 && Mathf.Round(_points.Points) % 20 == 0 && !changedState)
+        {
+            ChangeLevelState(false);
+            Reorder();
+            changedState = true;
+        }
         
-        
-        // if (_points.Points >= 10)// && !setInPlace)
-        // {
-        //     ChangeLevel();
-        //     //setInPlace = false;
-        // }
+        ChangeLevel();
     }
 
+    void ChangeLevelState(bool state)
+    {
+        int levelsCount = _levels.Length;
+        
+        LevelPosition level;
+        for (int i = 0; i < levelsCount; i++)
+        {
+            level = _levels[i].GetComponent<LevelPosition>();
+            level.SetInPlace = state;
+            
+            // Debug.Log("false");
+            // Debug.Log($"{level.gameObject.name} finalPosition set in {level.FinalPosition}");
+            // Debug.Log($"{level.gameObject.name} firstPosition set in {level.FirstPosition}");
+        }
+    }
+
+    void SetNextLevelPosition()
+    {
+        int levelsCount = _levels.Length;
+        
+        LevelPosition level;
+        for (int i = 0; i < levelsCount - 1; i++)
+        {
+            level = _levels[i].GetComponent<LevelPosition>();
+            if (level.SetInPlace)
+            {
+                level.FinalPosition = _levels[i + 1].GetComponent<LevelPosition>().FirstPosition;
+                _levels[levelsCount-1].GetComponent<LevelPosition>().FinalPosition = _levels[0].GetComponent<LevelPosition>().FirstPosition;
+            }
+        }
+    }
+    
     void ChangeLevel()
     {
         int levelsCount = _levels.Length;
         
-        LevelPosition levelPosition;
-        for (int i = 0; i < levelsCount - 1; i++)
-        {
-            levelPosition = _levels[i].GetComponent<LevelPosition>();
-            levelPosition.AnchoredPosition -= new Vector2(0, levelPosition.Size.y) * Time.deltaTime * _speed;
+        LevelPosition level; 
+        for (int i = 0; i < levelsCount; i++) 
+        { 
+            level = _levels[i].GetComponent<LevelPosition>();
+            if (!level.SetInPlace)
+            {
+                level.MoveToScreen(_speed);
+            }
         }
-        Reorder();
     }
 
     void Reorder()
     {
         int levelsCount = _levels.Length;
         
-        Debug.Log("reorder");
-        
-        for (int i = 0; i < levelsCount-1; i++)
+        for (int i = 0; i < levelsCount - 1; i++)
             (_levels[i], _levels[i+1]) = (_levels[i+1], _levels[i]);
     }
 }

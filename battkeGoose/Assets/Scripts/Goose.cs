@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Goose : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Enemy")
+        if (col.gameObject.CompareTag("Enemy"))
         {
             Loose();
         }
@@ -12,7 +13,8 @@ public class Goose : MonoBehaviour
 
     void Loose()
     {
-        Debug.Log("lost");
+        Scene scene = SceneManager.GetActiveScene(); 
+        SceneManager.LoadScene(scene.name);
     }
     
 }
